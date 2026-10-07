@@ -4,6 +4,10 @@ A responsive AI chatbot widget built for the Web Developer Technical Assessment.
 
 The chatbot uses Google Gemini API to provide AI responses for an e-commerce/tech product website.
 
+## Live Demo
+
+[View Live Demo](https://ai-chatbot-widget-iqzw.vercel.app/)
+
 ## Features
 
 - Responsive chatbot UI
@@ -67,6 +71,7 @@ Start the project using Vercel:
 vercel dev
 
 The application will be available at the local URL shown by Vercel.
+
 
 ##API Configuration
 The chatbot uses Google Gemini API.
