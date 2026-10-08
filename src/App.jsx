@@ -96,11 +96,12 @@ function App() {
     try {
       // Convert previous messages into Gemini format
       const history = updatedMessages
-        .slice(0, -1)
-        .filter(
-          (message) =>
-            message.role === "user" || message.role === "assistant"
-        )
+  .slice(0, -1)
+  .filter(
+    (message) =>
+      (message.role === "user" || message.role === "assistant") &&
+      message.id !== 1
+  )
         .map((message) => ({
           role: message.role === "assistant" ? "model" : "user",
           parts: [

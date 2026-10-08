@@ -17,7 +17,7 @@ export default async function handler(req, res) {
       });
     }
 
-    const { message } = req.body;
+    const { message, history = [] } = req.body;
 
     if (!message || !message.trim()) {
       return res.status(400).json({
@@ -31,10 +31,22 @@ export default async function handler(req, res) {
       apiKey: process.env.GEMINI_API_KEY,
     });
 
-    const response = await ai.models.generateContent({
-      model: "gemini-3.5-flash-lite",
-      contents: message,
-      config: {
+    const contents = [
+  ...history,
+  {
+    role: "user",
+    parts: [
+      {
+        text: message,
+      },
+    ],
+  },
+];
+
+const response = await ai.models.generateContent({
+  model: "gemini-3.5-flash-lite",
+  contents,
+  config: {
        systemInstruction: `
 You are the AI Shopping Assistant for TechStore.
 
